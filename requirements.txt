@@ -2,4 +2,4 @@ vanna
 streamlit
 python-dotenv
 SpeechRecognition
-
+pyaudio
