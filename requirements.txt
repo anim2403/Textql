@@ -1,6 +1,5 @@
 vanna
 streamlit
 python-dotenv
-speech_recognition
-StringIO
+SpeechRecognition
 pyaudio
