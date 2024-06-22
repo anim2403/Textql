@@ -3,7 +3,7 @@ import streamlit as st
 import json
 from io import StringIO
 import speech_recognition as sr
-import pyaudio
+# import pyaudio
 from vanna_calls import (
     generate_questions_cached,
     generate_sql_cached,
