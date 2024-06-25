@@ -2,8 +2,6 @@ import time
 import streamlit as st
 import json
 from io import StringIO
-import speech_recognition as sr
-import pyaudio
 from vanna_calls import (
     generate_questions_cached,
     generate_sql_cached,
@@ -43,30 +41,6 @@ else:
 
 # Setup Vanna with the appropriate database
 setup_vanna(st.session_state.get('uploaded_db_file'))
-def get_voice_input():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.write("Listening... Speak now.")
-        audio = recognizer.listen(source)
-        try:
-            text = recognizer.recognize_google(audio)
-            return text
-        except sr.UnknownValueError:
-            st.error("Sorry, I couldn't understand that.")
-            return None
-        except sr.RequestError:
-            st.error("Sorry, there was an error with the speech recognition service.")
-            return None
-def set_question(question):
-    st.session_state["my_question"] = question
-if st.button("🎤 Ask with Voice"):
-    voice_question = get_voice_input()
-    if voice_question:
-        st.session_state["my_question"] = voice_question
-        st.experimental_rerun()
-
-
-my_question = st.session_state.get("my_question", default=None)
 
 def set_question(question):
     st.session_state["my_question"] = question
